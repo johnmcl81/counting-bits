@@ -4,6 +4,7 @@
 
 function Count (input) {
   console.time('performance')
+
   if (isRangeError(input)) {
     throw new RangeError('Error: Input must be positive integer')
   } else {
@@ -11,9 +12,7 @@ function Count (input) {
     let number = input
     let positionArray = []
     if (number > 0) {
-      // Loop while input number not 0
       while (number > 0) {
-        // get position of set bit and add to positionArray
         let bitPostion = Math.log2(number ^ (number & (number - 1)))
         positionArray.push(bitPostion)
 
@@ -23,8 +22,8 @@ function Count (input) {
       }
     }
 
-    // add postive bit count to front of array
     positionArray.unshift(count)
+
     console.timeEnd('performance')
     return positionArray
   }
